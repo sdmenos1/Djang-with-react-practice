@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',  # Django REST Framework for API development
     'coreapi',  # Core API for schema generation
     'tasks',  # Custom app for task management
+    'account',  # Custom app for user management
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,5 @@ CORS_ALLOWED_ORIGINS = [
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS' : 'rest_framework.schemas.coreapi.AutoSchema'
 }    
+
+AUTH_USER_MODEL = 'account.User'  # Custom user model
