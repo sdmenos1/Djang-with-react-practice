@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',  # For handling CORS
     'rest_framework',  # Django REST Framework for API development
+    'rest_framework.authtoken',  # Token authentication
     'coreapi',  # Core API for schema generation
     'tasks',  # Custom app for task management
     'account',  # Custom app for user management
@@ -132,7 +133,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS' : 'rest_framework.schemas.coreapi.AutoSchema'
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }    
 
 AUTH_USER_MODEL = 'account.User'  # Custom user model
